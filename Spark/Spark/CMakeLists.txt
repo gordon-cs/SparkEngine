@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.8)
+project(Spark)
+
+set(SOURCE 
+    src/Main.cpp
+    src/Core/Application.cpp
+    src/Core/Display/Display.cpp
+)
+
+add_executable(${PROJECT_NAME} ${SOURCE})
+
+find_package(OpenGL REQUIRED)
+
+
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "GLFW lib only")
+set(GLFW_INSTALL OFF CACHE BOOL "GLFW lib only")
+
+add_subdirectory(lib/glfw)
+
+target_include_directories(${PROJECT_NAME} PRIVATE include)
+target_include_directories(${PROJECT_NAME} PRIVATE lib/glfw/include)
+
+target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} glfw)
