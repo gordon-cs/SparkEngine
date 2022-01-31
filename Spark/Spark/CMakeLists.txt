@@ -5,6 +5,7 @@ set(SOURCE
     src/Main.cpp
     src/Core/Application.cpp
     src/Core/Display/Display.cpp
+    src/Core/Display/Color.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE})
