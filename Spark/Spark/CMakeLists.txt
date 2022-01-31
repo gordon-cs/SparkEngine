@@ -15,9 +15,9 @@ find_package(OpenGL REQUIRED)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "GLFW lib only")
 set(GLFW_INSTALL OFF CACHE BOOL "GLFW lib only")
 
-add_subdirectory(lib/glfw)
+add_subdirectory(external/glfw)
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-target_include_directories(${PROJECT_NAME} PRIVATE lib/glfw/include)
+target_include_directories(${PROJECT_NAME} PRIVATE external/glfw/include)
 
 target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} glfw)
