@@ -1,5 +1,8 @@
 #pragma once
 #include<iostream>
+#include<fstream>
+#include<sstream>
+#include<string>
 #include<Color.h>
 #include<glad/gl.h>
 #include<GLFW/glfw3.h>
