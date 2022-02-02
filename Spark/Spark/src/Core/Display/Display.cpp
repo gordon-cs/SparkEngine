@@ -66,7 +66,7 @@ unsigned int CompileShader(unsigned int type, const std::string& source) {
     return id;
 }
 
-unsigned int Display::CreateShader(const std::string& vertexShader, const std::string& fragmentShader) {
+unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader) {
     unsigned int program = glCreateProgram();
     unsigned int vertShader = CompileShader(GL_VERTEX_SHADER, vertexShader);
     unsigned int fragShader = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
@@ -81,6 +81,9 @@ unsigned int Display::CreateShader(const std::string& vertexShader, const std::s
 
     return program;
 }
+
+
+
 
 
 void Display::Initialize() {
@@ -116,9 +119,7 @@ void Display::Initialize() {
     }; 
 
 
-    unsigned int vao;
-    GLCall(glGenVertexArrays(1, &vao));
-    GLCall(glBindVertexArray(vao)); 
+    
 
     _vertexBuffer = new VertexBuffer(positions, 4 * 2 * sizeof(float));
 

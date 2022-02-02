@@ -2,6 +2,7 @@
 #include<fstream>
 #include<sstream>
 #include<string>
+#include<iostream>
 #include<signal.h>
 #include<Color.h>
 #include<Renderer.h>
@@ -22,6 +23,4 @@ class Display {
         IndexBuffer* _indexBuffer;
         unsigned int _shader;
 
-        unsigned int CreateShader
-            (const std::string& vertexShader, const std::string& fragmentShader);
 };

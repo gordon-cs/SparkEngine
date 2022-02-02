@@ -6,7 +6,6 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/external/glfw/include",
                 "${workspaceFolder}/include",
-                "${workspaceFolder}/include",
                 "${workspaceFolder}/include"
             ],
             "defines": [],

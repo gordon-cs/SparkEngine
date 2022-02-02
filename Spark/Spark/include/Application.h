@@ -3,11 +3,11 @@
 
 class Application {
     public:
-        Application(Display display);
+        Application(Display* display);
         void Start();
         void Loop();
         void Shutdown();
 
     private:
-        Display _display;
+        Display* _display;
 };

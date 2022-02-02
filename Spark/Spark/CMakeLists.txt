@@ -10,7 +10,8 @@ set(SOURCE
     src/Core/Renderer/Renderer.cpp
     src/Core/Renderer/VertexBuffer.cpp
     src/Core/Renderer/IndexBuffer.cpp
-
+    src/Core/Renderer/VertexArray.cpp
+    src/Core/Utilities/ShaderUtility.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE})
