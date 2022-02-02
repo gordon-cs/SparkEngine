@@ -13,9 +13,4 @@ void Application::Start() {
 
 void Application::Loop() {
     _display.Render();
-    Shutdown();
-}
-
-void Application::Shutdown() {
-    _display.Shutdown();
 }

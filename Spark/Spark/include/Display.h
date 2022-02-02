@@ -11,12 +11,15 @@
 class Display {
     public: 
         Display();
+        ~Display();
         void Initialize();
         void Render();
         void Shutdown();
     private:
         Color _color;
         GLFWwindow* _window;
+        VertexBuffer* _vertexBuffer;
+        IndexBuffer* _indexBuffer;
         unsigned int _shader;
 
         unsigned int CreateShader

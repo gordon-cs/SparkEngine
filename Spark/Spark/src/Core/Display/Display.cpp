@@ -4,6 +4,14 @@ Display::Display() {
     _color = Color(33.0f, 33.0f, 33.0, 0.0f);
 }
 
+Display::~Display() {
+    GLCall(glDeleteProgram(_shader));
+    delete _vertexBuffer;
+    delete _indexBuffer;
+    glfwTerminate();
+}
+
+
 struct ShaderProgramSource {
     std::string VertexSource;
     std::string FragmentSource;
@@ -112,14 +120,17 @@ void Display::Initialize() {
     GLCall(glGenVertexArrays(1, &vao));
     GLCall(glBindVertexArray(vao)); 
 
-    VertexBuffer vertexBuffer = VertexBuffer(positions, 4 * 2 * sizeof(float));
+    _vertexBuffer = new VertexBuffer(positions, 4 * 2 * sizeof(float));
 
     
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
 
-    IndexBuffer indexBuffer = IndexBuffer(indicies, 6);
+    _indexBuffer = new IndexBuffer(indicies, 6);
+ 
+
+
  
     // ==========================Shaders======================================== //
     ShaderProgramSource source = ParseShader("../resources/shaders/Basic.shader");
@@ -147,9 +158,4 @@ void Display::Render() {
         /* Poll for and process events */
         glfwPollEvents();
     }
-}
-
-void Display::Shutdown() {
-    GLCall(glDeleteProgram(_shader));
-    glfwTerminate();
 }
