@@ -6,8 +6,6 @@ Display::Display() {
 
 Display::~Display() {
     GLCall(glDeleteProgram(_shader));
-    delete _vertexBuffer;
-    delete _indexBuffer;
     glfwTerminate();
 }
 
@@ -84,8 +82,6 @@ unsigned int CreateShader(const std::string& vertexShader, const std::string& fr
 
 
 
-
-
 void Display::Initialize() {
     if(!glfwInit())
         { return; }
@@ -119,18 +115,18 @@ void Display::Initialize() {
     }; 
 
 
+    unsigned int vao;
+    GLCall(glGenVertexArrays(1, &vao));
+    GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
+
+    VertexArray array = VertexArray();
+    _indexBuffer =  IndexBuffer(indicies, 6);
+    VertexBufferLayout layout;
+    layout.Push<float>(2);
+    _vertexBuffer = VertexBuffer(positions, 4 * 2 * sizeof(float));
     
-
-    _vertexBuffer = new VertexBuffer(positions, 4 * 2 * sizeof(float));
-
     
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
-
-
-    _indexBuffer = new IndexBuffer(indicies, 6);
- 
-
+    array.AddBuffer(_vertexBuffer, layout); 
 
  
     // ==========================Shaders======================================== //

@@ -7,6 +7,8 @@
 #include<Color.h>
 #include<Renderer.h>
 #include<VertexBuffer.h>
+#include<VertexBufferLayout.h>
+#include<VertexArray.h>
 #include<IndexBuffer.h>
 
 class Display {
@@ -19,8 +21,8 @@ class Display {
     private:
         Color _color;
         GLFWwindow* _window;
-        VertexBuffer* _vertexBuffer;
-        IndexBuffer* _indexBuffer;
+        VertexBuffer _vertexBuffer;
+        IndexBuffer _indexBuffer;
         unsigned int _shader;
 
 };
