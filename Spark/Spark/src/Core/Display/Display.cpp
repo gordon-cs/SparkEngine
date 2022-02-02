@@ -16,8 +16,6 @@ ShaderProgramSource ParseShader(const std::string filePath) {
         VERTEX = 0,
         FRAGMENT = 1
     };
-
-
     std::ifstream stream(filePath);
     std::stringstream stringStream[2];
     std::string line;
@@ -80,7 +78,10 @@ unsigned int Display::CreateShader(const std::string& vertexShader, const std::s
 void Display::Initialize() {
     if(!glfwInit())
         { return; }
-
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_CORE_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    
     _window = glfwCreateWindow(800, 800, "Spark Engine", NULL, NULL);
     
     if(!_window) {
@@ -88,8 +89,11 @@ void Display::Initialize() {
         return;
     }
     glfwMakeContextCurrent(_window);
+    glfwSwapInterval(1);
     gladLoadGL(glfwGetProcAddress);
-   
+    
+
+
     // ========================= Buffers ==================== //
     float positions[] = {
         -0.5f, -0.5f,  // 0
@@ -103,10 +107,15 @@ void Display::Initialize() {
         2, 3, 0 
     }; 
 
+
+    unsigned int vao;
+    GLCall(glGenVertexArrays(1, &vao));
+    GLCall(glBindVertexArray(vao)); 
+
     unsigned int buffer;
     glGenBuffers(1, &buffer);
     glBindBuffer(GL_ARRAY_BUFFER, buffer); 
-    glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(float), positions, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
@@ -118,22 +127,26 @@ void Display::Initialize() {
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indicies, GL_STATIC_DRAW);
 
 
-
+    // ==========================Shaders======================================== //
     ShaderProgramSource source = ParseShader("../resources/shaders/Basic.shader");
     _shader = CreateShader(source.VertexSource, source.FragmentSource);
     glUseProgram(_shader);
+    
+    int location = glGetUniformLocation(_shader, "uniformColor");
+    ASSERT(location != 1);
+    glUniform4f(location, 0.2f, 0.3f, 0.8f, 1.0f); // Set color of shader
 }
+
 
 
 void Display::Render() {
     while(!glfwWindowShouldClose(_window)) {
         /* Render here */
-        glClearColor(_color.red, _color.green, _color.blue, _color.alpha);
+        GLCall(glClearColor(_color.red, _color.green, _color.blue, _color.alpha));
 
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);        
+        GLCall(glClear(GL_COLOR_BUFFER_BIT));
         
+        GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));        
         /* Swap front and back buffers */
         glfwSwapBuffers(_window);
 
@@ -143,6 +156,6 @@ void Display::Render() {
 }
 
 void Display::Shutdown() {
-    glDeleteProgram(_shader);
+    GLCall(glDeleteProgram(_shader));
     glfwTerminate();
 }

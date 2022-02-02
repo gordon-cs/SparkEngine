@@ -1,11 +1,10 @@
 #pragma once
-#include<iostream>
 #include<fstream>
 #include<sstream>
 #include<string>
+#include<signal.h>
 #include<Color.h>
-#include<glad/gl.h>
-#include<GLFW/glfw3.h>
+#include<Renderer.h>
 
 class Display {
     public: 

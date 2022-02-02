@@ -7,6 +7,8 @@ set(SOURCE
     src/Core/Application.cpp
     src/Core/Display/Display.cpp
     src/Core/Display/Color.cpp
+    src/Core/Renderer/Renderer.cpp
+    src/Core/Renderer/VertexBuffer.cpp
 
 )
 
