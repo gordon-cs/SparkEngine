@@ -5,6 +5,8 @@
 #include<signal.h>
 #include<Color.h>
 #include<Renderer.h>
+#include<VertexBuffer.h>
+#include<IndexBuffer.h>
 
 class Display {
     public: 

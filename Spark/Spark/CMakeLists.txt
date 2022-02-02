@@ -9,6 +9,7 @@ set(SOURCE
     src/Core/Display/Color.cpp
     src/Core/Renderer/Renderer.cpp
     src/Core/Renderer/VertexBuffer.cpp
+    src/Core/Renderer/IndexBuffer.cpp
 
 )
 

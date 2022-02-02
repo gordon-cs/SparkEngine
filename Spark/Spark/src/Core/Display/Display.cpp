@@ -112,21 +112,15 @@ void Display::Initialize() {
     GLCall(glGenVertexArrays(1, &vao));
     GLCall(glBindVertexArray(vao)); 
 
-    unsigned int buffer;
-    glGenBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer); 
-    glBufferData(GL_ARRAY_BUFFER, 4 * 2 * sizeof(float), positions, GL_STATIC_DRAW);
+    VertexBuffer vertexBuffer = VertexBuffer(positions, 4 * 2 * sizeof(float));
 
+    
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
 
-    unsigned int indexBufferObject;
-    glGenBuffers(1, &indexBufferObject);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferObject); 
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indicies, GL_STATIC_DRAW);
-
-
+    IndexBuffer indexBuffer = IndexBuffer(indicies, 6);
+ 
     // ==========================Shaders======================================== //
     ShaderProgramSource source = ParseShader("../resources/shaders/Basic.shader");
     _shader = CreateShader(source.VertexSource, source.FragmentSource);
