@@ -1,4 +1,5 @@
 #include<Color.h>
+
 Color::Color() {};
 Color::Color(float redVal, float greenVal, float blueVal, float alphaVal) {
     red = redVal / 255.0f;

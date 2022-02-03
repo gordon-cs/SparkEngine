@@ -3,15 +3,8 @@ project(Spark)
 
 set(SOURCE 
     src/Main.cpp
-    src/gl.c
-    src/Core/Application.cpp
-    src/Core/Display/Display.cpp
     src/Core/Display/Color.cpp
-    src/Core/Renderer/Renderer.cpp
-    src/Core/Renderer/VertexBuffer.cpp
-    src/Core/Renderer/IndexBuffer.cpp
-    src/Core/Renderer/VertexArray.cpp
-    src/Core/Utilities/ShaderUtility.cpp
+    src/gl.c
 )
 
 add_executable(${PROJECT_NAME} ${SOURCE})
