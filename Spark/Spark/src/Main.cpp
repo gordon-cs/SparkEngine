@@ -2,7 +2,6 @@
 #include<glad/gl.h>
 #include<GLFW/glfw3.h>
 
-
 int main() {
     Color color = Color(33.0f, 33.0f, 33.0f, 0.0f);
 
