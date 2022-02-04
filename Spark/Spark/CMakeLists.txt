@@ -4,6 +4,7 @@ project(Spark)
 set(SOURCE 
     src/Main.cpp
     src/Core/Display/Color.cpp
+    src/Core/Utilities/Shader.cpp
     src/gl.c
 )
 
