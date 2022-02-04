@@ -73,15 +73,14 @@ int main() {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
     Shader shader = Shader
-        ("../../../resoures/shaders/defaultShader.vertex", 
-         "../../../resources/shaders/defaultShader.fragment");
-    
-    /* Set window background color */
-    glClearColor(color.red, color.green, color.blue, color.alpha);
+        ("../resources/shaders/defaultShader.vertex", 
+         "../resources/shaders/defaultShader.fragment");
 
     /* Loop until the user closes the window */
     while(!glfwWindowShouldClose(window))
     {
+        /* Set window background color */
+        glClearColor(color.red, color.green, color.blue, color.alpha);
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
