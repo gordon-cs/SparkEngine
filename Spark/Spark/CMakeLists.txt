@@ -4,6 +4,9 @@ project(Spark)
 set(SOURCE 
     src/Main.cpp
     src/Core/Display/Color.cpp
+    src/Core/Renderer/ElementBuffer.cpp
+    src/Core/Renderer/VertexBuffer.cpp
+    src/Core/Renderer/VertexArray.cpp
     src/Core/Utilities/Shader.cpp
     src/gl.c
 )
