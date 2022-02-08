@@ -1,15 +1,15 @@
 #pragma once
 #include<iostream>
-#include<glad/gl.h>
+#include<OpenGLError.h>
 
-class ElementBuffer
+class IndexBuffer
 {
     public:
 	    // ID reference of Elements Buffer Object
 	    GLuint ID;
 	    // Constructor that generates a Elements Buffer Object and links it to indices
-	    ElementBuffer(unsigned int* indices, unsigned int size);
-        ~ElementBuffer();
+	    IndexBuffer(unsigned int* indices, unsigned int size);
+        ~IndexBuffer();
 
 
 	    // Binds the EBO

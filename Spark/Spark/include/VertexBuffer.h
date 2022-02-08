@@ -1,5 +1,5 @@
 #pragma once
-#include <glad/gl.h>
+#include<OpenGLError.h>
 
 class VertexBuffer {
     public:

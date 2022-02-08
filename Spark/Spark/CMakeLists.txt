@@ -4,7 +4,11 @@ project(Spark)
 set(SOURCE 
     src/Main.cpp
     src/Core/Display/Color.cpp
+    src/Core/Renderer/IndexBuffer.cpp
+    src/Core/Renderer/VertexBuffer.cpp
+    src/Core/Renderer/VertexArray.cpp
     src/Core/Utilities/Shader.cpp
+    src/Core/Utilities/OpenGLError.cpp
     src/gl.c
 )
 

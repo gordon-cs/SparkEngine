@@ -1,7 +1,9 @@
 #include<Color.h>
 #include<Shader.h>
-#include<cmath>
-#include<glad/gl.h>
+#include<VertexArray.h>
+#include<VertexBuffer.h>
+#include<IndexBuffer.h>
+#include<OpenGLError.h>
 #include<GLFW/glfw3.h>
 
 int main() {
@@ -35,7 +37,7 @@ int main() {
     /* Load glad */
     gladLoadGL(glfwGetProcAddress);
 
-    glViewport(0, 0, 1000, 800);
+    GLCall(glViewport(0, 0, 1000, 800));
 
     Shader* shader = new Shader
         ("../resources/shaders/defaultShader.vertex", 
@@ -53,55 +55,33 @@ int main() {
     };
 
     /* Generate arrays and buffers */
-    unsigned int vertexBuffer;
-    unsigned int indexBuffer;
-    unsigned int vertexArray;
+    VertexArray* vertexArray = new VertexArray();
+    vertexArray -> Bind();
+    VertexBuffer* vertexBuffer = new VertexBuffer(vertices, sizeof(vertices));
+    IndexBuffer* indexBuffer = new IndexBuffer(indices, sizeof(indices));
+
+    vertexArray -> LinkVertexBuffer(vertexBuffer, 0);
     
-
-	// Generate the VAO and VBO with only 1 object each
-	glGenVertexArrays(1, &vertexArray);
-	glGenBuffers(1, &vertexBuffer);
-    glGenBuffers(1, &indexBuffer);
-
-	// Make the VAO the current Vertex Array Object by binding it
-	glBindVertexArray(vertexArray);     
-
-	// Bind the VBO specifying it's a GL_ARRAY_BUFFER
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-	
-    // Introduce the vertices into the VBO
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-    // Configure the Vertex Attribute so that OpenGL knows how to read the VBO
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-	// Enable the Vertex Attribute so that OpenGL knows to use it
-	glEnableVertexAttribArray(0);
-
-	// Bind both the VBO and VAO to 0 so that we don't accidentally modify the VAO and VBO we created
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
+    vertexArray -> Unbind();
+    vertexBuffer -> Unbind();
+    indexBuffer -> Unbind();
 
     while(!glfwWindowShouldClose(window)) {
-        glClearColor(color.red, color.green, color.blue, color.alpha);
+        GLCall(glClearColor(color.red, color.green, color.blue, color.alpha));
         /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+        GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
         shader -> Activate();
-        glBindVertexArray(vertexArray);
-        glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+        vertexArray -> Bind();
+        GLCall(glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0));
 
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-
-    glDeleteVertexArrays(1, &vertexArray);
-	glDeleteBuffers(1, &vertexBuffer);
-    glDeleteBuffers(1, &indexBuffer);
+    
+    delete vertexArray;
+    delete vertexBuffer;
+    delete indexBuffer;
     delete shader;
     glfwTerminate();
     return 0;

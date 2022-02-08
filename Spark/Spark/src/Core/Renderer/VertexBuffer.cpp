@@ -2,20 +2,20 @@
 
 
 VertexBuffer::VertexBuffer(float* vertices, unsigned int size) {
-    glGenBuffers(1, &ID);
-	glBindBuffer(GL_ARRAY_BUFFER, ID);
-	glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
+    GLCall(glGenBuffers(1, &ID));
+	GLCall(glBindBuffer(GL_ARRAY_BUFFER, ID));
+	GLCall(glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW));
 }
 
 VertexBuffer::~VertexBuffer() {
-    glDeleteBuffers(1, &ID);
+    GLCall(glDeleteBuffers(1, &ID));
 }
 
 
 void VertexBuffer::Bind() {
-    glBindBuffer(GL_ARRAY_BUFFER, ID);
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, ID));
 }
 
 void VertexBuffer::Unbind() {
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 }
