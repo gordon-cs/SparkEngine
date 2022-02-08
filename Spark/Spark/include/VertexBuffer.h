@@ -4,7 +4,7 @@
 class VertexBuffer {
     public:
         unsigned int ID;
-        VertexBuffer(float* vertices, GLsizeiptr size);
+        VertexBuffer(float* vertices, unsigned int size);
         ~VertexBuffer();
 
         void Bind();

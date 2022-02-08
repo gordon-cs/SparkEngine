@@ -11,6 +11,7 @@ class Shader {
 
     public:
         unsigned int ID;
+        ~Shader();
         Shader(const char* vertexFile, const char* fragmentFile);
         
         void Activate();

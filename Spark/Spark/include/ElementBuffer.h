@@ -8,7 +8,7 @@ class ElementBuffer
 	    // ID reference of Elements Buffer Object
 	    GLuint ID;
 	    // Constructor that generates a Elements Buffer Object and links it to indices
-	    ElementBuffer(unsigned int* indices, GLsizeiptr size);
+	    ElementBuffer(unsigned int* indices, unsigned int size);
         ~ElementBuffer();
 
 

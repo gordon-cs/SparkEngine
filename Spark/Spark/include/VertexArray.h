@@ -10,7 +10,7 @@ class VertexArray {
         ~VertexArray();
 
         // Links a VBO to the VAO using a certain layout
-        void LinkVertexBuffer(VertexBuffer* vertexBuffer, GLuint layout);
+        void LinkVertexBuffer(VertexBuffer* vertexBuffer, unsigned int layout);
         // Binds the VAO
         void Bind();
         // Unbinds the VAO

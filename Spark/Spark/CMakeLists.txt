@@ -4,9 +4,6 @@ project(Spark)
 set(SOURCE 
     src/Main.cpp
     src/Core/Display/Color.cpp
-    src/Core/Renderer/ElementBuffer.cpp
-    src/Core/Renderer/VertexBuffer.cpp
-    src/Core/Renderer/VertexArray.cpp
     src/Core/Utilities/Shader.cpp
     src/gl.c
 )
@@ -18,9 +15,9 @@ find_package(OpenGL REQUIRED)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "GLFW lib only")
 set(GLFW_INSTALL OFF CACHE BOOL "GLFW lib only")
 
-
-
 add_subdirectory(external/glfw)
+
+add_compile_options(-Wall -g)
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE external/glfw/include)
