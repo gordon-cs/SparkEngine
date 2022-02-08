@@ -1,9 +1,7 @@
 #include<Color.h>
-#include<Shader.h>
-#include<VertexArray.h>
 #include<VertexBuffer.h>
-#include<IndexBuffer.h>
 #include<OpenGLError.h>
+#include<Renderer.h>
 #include<GLFW/glfw3.h>
 
 int main() {
@@ -58,7 +56,7 @@ int main() {
     VertexArray* vertexArray = new VertexArray();
     vertexArray -> Bind();
     VertexBuffer* vertexBuffer = new VertexBuffer(vertices, sizeof(vertices));
-    IndexBuffer* indexBuffer = new IndexBuffer(indices, sizeof(indices));
+    IndexBuffer* indexBuffer = new IndexBuffer(indices, sizeof(indices), sizeof(indices) / sizeof(indices[0]));
 
     vertexArray -> LinkVertexBuffer(vertexBuffer, 0);
     
@@ -66,15 +64,13 @@ int main() {
     vertexBuffer -> Unbind();
     indexBuffer -> Unbind();
 
+    Renderer* renderer = new Renderer();
+
     while(!glfwWindowShouldClose(window)) {
         GLCall(glClearColor(color.red, color.green, color.blue, color.alpha));
         /* Render here */
-        GLCall(glClear(GL_COLOR_BUFFER_BIT));
-
-        shader -> Activate();
-        vertexArray -> Bind();
-        GLCall(glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0));
-
+        renderer -> Clear();
+        renderer -> Render(vertexArray, indexBuffer, shader);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -83,6 +79,7 @@ int main() {
     delete vertexBuffer;
     delete indexBuffer;
     delete shader;
+    delete renderer;
     glfwTerminate();
     return 0;
 }

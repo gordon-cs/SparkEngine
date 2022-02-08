@@ -64,6 +64,6 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile) {
 }
 
 // Activates the Shader Program
-void Shader::Activate() {
+void Shader::Activate() const {
 	glUseProgram(ID);
 }

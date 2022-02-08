@@ -16,7 +16,7 @@ void VertexArray::LinkVertexBuffer(VertexBuffer* vertexBuffer, unsigned int layo
 	vertexBuffer -> Unbind();
 }
 
-void VertexArray::Bind() {
+void VertexArray::Bind() const {
     GLCall(glBindVertexArray(ID));
 }
 

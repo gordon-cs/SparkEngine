@@ -14,6 +14,6 @@ class Shader {
         ~Shader();
         Shader(const char* vertexFile, const char* fragmentFile);
         
-        void Activate();
+        void Activate() const;
         void Delete();
 };
