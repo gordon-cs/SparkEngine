@@ -9,11 +9,11 @@ VertexArray::~VertexArray() {
     GLCall(glDeleteVertexArrays(1, &ID));
 }
 
-void VertexArray::LinkVertexBuffer(VertexBuffer* vertexBuffer, unsigned int layout) {
-    vertexBuffer -> Bind();
+void VertexArray::LinkVertexBuffer(VertexBuffer& vertexBuffer, unsigned int layout) {
+    vertexBuffer.Bind();
 	GLCall(glVertexAttribPointer(layout, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
 	GLCall(glEnableVertexAttribArray(layout));
-	vertexBuffer -> Unbind();
+	vertexBuffer.Unbind();
 }
 
 void VertexArray::Bind() const {

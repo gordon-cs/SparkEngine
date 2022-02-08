@@ -37,7 +37,7 @@ int main() {
 
     GLCall(glViewport(0, 0, 1000, 800));
 
-    Shader* shader = new Shader
+    Shader shader = Shader
         ("../resources/shaders/defaultShader.vertex", 
          "../resources/shaders/defaultShader.fragment");
 
@@ -53,32 +53,21 @@ int main() {
     };
 
     /* Generate arrays and buffers */
-    VertexArray* vertexArray = new VertexArray();
-    vertexArray -> Bind();
-    VertexBuffer* vertexBuffer = new VertexBuffer(vertices, sizeof(vertices));
-    IndexBuffer* indexBuffer = new IndexBuffer(indices, sizeof(indices), sizeof(indices) / sizeof(indices[0]));
+    VertexArray vertexArray = VertexArray();
+    VertexBuffer vertexBuffer = VertexBuffer(vertices, sizeof(vertices));
+    IndexBuffer indexBuffer = IndexBuffer(indices, sizeof(indices), sizeof(indices) / sizeof(indices[0]));
 
-    vertexArray -> LinkVertexBuffer(vertexBuffer, 0);
-    
-    vertexArray -> Unbind();
-    vertexBuffer -> Unbind();
-    indexBuffer -> Unbind();
-
-    Renderer* renderer = new Renderer();
+    Renderer* renderer = new Renderer(vertexArray, vertexBuffer, indexBuffer);
 
     while(!glfwWindowShouldClose(window)) {
         GLCall(glClearColor(color.red, color.green, color.blue, color.alpha));
         /* Render here */
         renderer -> Clear();
-        renderer -> Render(vertexArray, indexBuffer, shader);
+        renderer -> Render(shader);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
     
-    delete vertexArray;
-    delete vertexBuffer;
-    delete indexBuffer;
-    delete shader;
     delete renderer;
     glfwTerminate();
     return 0;
