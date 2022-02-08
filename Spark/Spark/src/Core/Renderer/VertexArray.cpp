@@ -11,7 +11,7 @@ VertexArray::~VertexArray() {
 
 void VertexArray::LinkVertexBuffer(VertexBuffer* vertexBuffer, unsigned int layout) {
     vertexBuffer -> Bind();
-	GLCall(glVertexAttribPointer(layout, 3, GL_FLOAT, GL_FALSE, 0, (void*)0));
+	GLCall(glVertexAttribPointer(layout, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
 	GLCall(glEnableVertexAttribArray(layout));
 	vertexBuffer -> Unbind();
 }
