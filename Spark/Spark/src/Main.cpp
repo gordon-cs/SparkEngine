@@ -19,8 +19,6 @@ int main() {
 
     GLFWwindow* window;
     
-    
-
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(1000, 800, "Spark Engine", NULL, NULL);
     if(window == NULL) {
@@ -37,9 +35,6 @@ int main() {
 
     GLCall(glViewport(0, 0, 1000, 800));
 
-    Shader shader = Shader("../resources/shaders/defaultShader.vertex",
-                           "../resources/shaders/defaultShader.fragment");
-
     float vertices[] = {
         -0.5f, -0.5f, // 0
          0.0f,  0.5f, // 1
@@ -47,7 +42,7 @@ int main() {
     };
 
     //Indices for vertices order
-    uint indices[] = {
+    uint32_t indices[] = {
         0, 1, 2
     };
 
@@ -55,21 +50,36 @@ int main() {
 
     /* Generate arrays and buffers */
     VertexArray vertexArray = VertexArray();
+    vertexArray.Bind();
+
     VertexBuffer vertexBuffer = VertexBuffer(vertices, sizeof(vertices));
     IndexBuffer indexBuffer = IndexBuffer(indices, sizeof(indices), indicesElementCount);
+    
+    vertexArray.LinkVertexBuffer(vertexBuffer, 0);
+    
+    vertexArray.Unbind();
+    vertexBuffer.Unbind();
+    indexBuffer.Unbind();
 
-    Renderer* renderer = new Renderer(vertexArray, vertexBuffer, indexBuffer);
+    Shader shader = Shader("../resources/shaders/defaultShader.vertex",
+                           "../resources/shaders/defaultShader.fragment");
+    
+    Renderer renderer = Renderer();
 
     while(!glfwWindowShouldClose(window)) {
         GLCall(glClearColor(color.red, color.green, color.blue, color.alpha));
+        
         /* Render here */
-        renderer -> Clear();
-        renderer -> Render(shader);
+        renderer.Clear();
+        renderer.Render(vertexArray, indexBuffer, shader);
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+    vertexArray.Delete();
+    vertexBuffer.Delete();
+    indexBuffer.Delete();
     shader.Delete();
-    delete renderer;
     glfwTerminate();
     return 0;
 }

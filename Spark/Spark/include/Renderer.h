@@ -5,13 +5,6 @@
 
 class Renderer {
     public:
-        Renderer(VertexArray& vertexArray, VertexBuffer& vertexBuffer, IndexBuffer& indexBuffer);
-        ~Renderer();
         void Clear() const;
-        void Render(const Shader& shader) const;
-
-    private: 
-        VertexArray _vertexArray;
-        VertexBuffer _vertexBuffer;
-        IndexBuffer _indexBuffer;
+        void Render(VertexArray& vertexArray, IndexBuffer& indexBuffer, Shader& shader) const;
 };
