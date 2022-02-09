@@ -16,7 +16,7 @@ std::string Shader::GetFileContents(const char* fileName) {
     throw(errno);
 }
 
-Shader::~Shader() {
+void Shader::Delete() {
     glDeleteProgram(ID);
 }
 

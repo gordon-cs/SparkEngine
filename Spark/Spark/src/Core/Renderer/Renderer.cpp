@@ -5,12 +5,18 @@ Renderer::Renderer(VertexArray& vertexArray, VertexBuffer& vertexBuffer, IndexBu
     _vertexBuffer = vertexBuffer;
     _indexBuffer = indexBuffer;
     
-    _vertexBuffer.Bind();
+    _vertexArray.Bind();
     _vertexArray.LinkVertexBuffer(_vertexBuffer, 0);
     
     _vertexArray.Unbind();
     _vertexBuffer.Unbind();
     _indexBuffer.Unbind();
+}
+
+Renderer::~Renderer() {
+    _vertexArray.Delete();
+    _vertexBuffer.Delete();
+    _indexBuffer.Delete();
 }
 
 void Renderer::Clear() const {

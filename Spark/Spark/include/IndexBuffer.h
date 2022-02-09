@@ -2,21 +2,21 @@
 #include<iostream>
 #include<OpenGLError.h>
 
-class IndexBuffer
-{
+class IndexBuffer {
     public:
 	    // ID reference of Elements Buffer Object
 	    GLuint ID;
 	    // Constructor that generates a Elements Buffer Object and links it to indices
-	    IndexBuffer(unsigned int* indices, unsigned int size, unsigned int count);
-        ~IndexBuffer();
+        IndexBuffer();
+	    IndexBuffer(uint32_t* indices, uint32_t size, uint32_t count);
 
-        inline unsigned int GetCount() const { return _indexCount; }
+        inline uint32_t GetCount() const { return _indexCount; }
 	    // Binds the EBO
 	    void Bind() const;
 	    // Unbinds the EBO
 	    void Unbind();
+        void Delete();
 
     private:
-        unsigned int _indexCount;
+        uint32_t _indexCount;
 };

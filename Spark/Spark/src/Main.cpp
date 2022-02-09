@@ -37,9 +37,8 @@ int main() {
 
     GLCall(glViewport(0, 0, 1000, 800));
 
-    Shader shader = Shader
-        ("../resources/shaders/defaultShader.vertex", 
-         "../resources/shaders/defaultShader.fragment");
+    Shader shader = Shader("../resources/shaders/defaultShader.vertex",
+                           "../resources/shaders/defaultShader.fragment");
 
     float vertices[] = {
         -0.5f, -0.5f, // 0
@@ -48,14 +47,16 @@ int main() {
     };
 
     //Indices for vertices order
-    unsigned int indices[] = {
+    uint indices[] = {
         0, 1, 2
     };
+
+    uint32_t indicesElementCount = sizeof(indices) / sizeof(indices[0]);
 
     /* Generate arrays and buffers */
     VertexArray vertexArray = VertexArray();
     VertexBuffer vertexBuffer = VertexBuffer(vertices, sizeof(vertices));
-    IndexBuffer indexBuffer = IndexBuffer(indices, sizeof(indices), sizeof(indices) / sizeof(indices[0]));
+    IndexBuffer indexBuffer = IndexBuffer(indices, sizeof(indices), indicesElementCount);
 
     Renderer* renderer = new Renderer(vertexArray, vertexBuffer, indexBuffer);
 
@@ -67,7 +68,7 @@ int main() {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    
+    shader.Delete();
     delete renderer;
     glfwTerminate();
     return 0;

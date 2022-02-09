@@ -5,11 +5,11 @@ VertexArray::VertexArray() {
     GLCall(glGenVertexArrays(1, &ID));
 }
 
-VertexArray::~VertexArray() {
+void VertexArray::Delete() {
     GLCall(glDeleteVertexArrays(1, &ID));
 }
 
-void VertexArray::LinkVertexBuffer(VertexBuffer& vertexBuffer, unsigned int layout) {
+void VertexArray::LinkVertexBuffer(VertexBuffer& vertexBuffer, uint32_t layout) {
     vertexBuffer.Bind();
 	GLCall(glVertexAttribPointer(layout, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0));
 	GLCall(glEnableVertexAttribArray(layout));

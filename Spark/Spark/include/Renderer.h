@@ -6,6 +6,7 @@
 class Renderer {
     public:
         Renderer(VertexArray& vertexArray, VertexBuffer& vertexBuffer, IndexBuffer& indexBuffer);
+        ~Renderer();
         void Clear() const;
         void Render(const Shader& shader) const;
 

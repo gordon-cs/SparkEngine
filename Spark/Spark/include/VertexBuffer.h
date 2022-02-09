@@ -3,10 +3,11 @@
 
 class VertexBuffer {
     public:
-        unsigned int ID;
-        VertexBuffer(float* vertices, unsigned int size);
-        ~VertexBuffer();
+        uint32_t ID;
+        VertexBuffer();
+        VertexBuffer(float* vertices, uint32_t size);
 
         void Bind();
         void Unbind();
+        void Delete();
 };

@@ -22,7 +22,7 @@ set(GLFW_INSTALL OFF CACHE BOOL "GLFW lib only")
 
 add_subdirectory(external/glfw)
 
-add_compile_options(-Wall -g)
+add_compile_options(-g)
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 target_include_directories(${PROJECT_NAME} PRIVATE external/glfw/include)
