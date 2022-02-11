@@ -17,3 +17,5 @@
 - All header files need to be put into the include directory next to the src directory
 - When creating a new .cpp file, you must add the path of the new file to CMakeLists.txt in the ```set(SOURCE)``` block, exactly like it is currently structured.
 - To contribute, please make changes on a new branch and create a pull request to merge into develop
+
+- Good documentation for OpenGL can be found [here](docs.gl)
