@@ -1,5 +1,12 @@
 #include<Renderer.h>
 
+Renderer::Renderer(VertexArray& vertexArray, VertexBuffer& vertexBuffer, IndexBuffer& indexBuffer) {
+    vertexArray.LinkVertexBuffer(vertexBuffer, 0);
+    vertexArray.Unbind();
+    vertexBuffer.Unbind();
+    indexBuffer.Unbind();
+}
+
 void Renderer::Clear() const {
     GLCall(glClear(GL_COLOR_BUFFER_BIT));
 }

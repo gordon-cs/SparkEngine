@@ -50,21 +50,13 @@ int main() {
 
     /* Generate arrays and buffers */
     VertexArray vertexArray = VertexArray();
-    vertexArray.Bind();
-
     VertexBuffer vertexBuffer = VertexBuffer(vertices, sizeof(vertices));
     IndexBuffer indexBuffer = IndexBuffer(indices, sizeof(indices), indicesElementCount);
-    
-    vertexArray.LinkVertexBuffer(vertexBuffer, 0);
-    
-    vertexArray.Unbind();
-    vertexBuffer.Unbind();
-    indexBuffer.Unbind();
 
     Shader shader = Shader("../resources/shaders/defaultShader.vertex",
                            "../resources/shaders/defaultShader.fragment");
     
-    Renderer renderer = Renderer();
+    Renderer renderer = Renderer(vertexArray, vertexBuffer, indexBuffer);
 
     while(!glfwWindowShouldClose(window)) {
         GLCall(glClearColor(color.red, color.green, color.blue, color.alpha));
