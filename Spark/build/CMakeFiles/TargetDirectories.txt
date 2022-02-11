@@ -1,9 +1,0 @@
-/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/build/CMakeFiles/rebuild_cache.dir
-/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/build/CMakeFiles/edit_cache.dir
-/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/build/CMakeFiles/Spark.dir
-/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/build/external/glfw/CMakeFiles/rebuild_cache.dir
-/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/build/external/glfw/CMakeFiles/edit_cache.dir
-/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/build/external/glfw/src/CMakeFiles/rebuild_cache.dir
-/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/build/external/glfw/src/CMakeFiles/edit_cache.dir
-/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/build/external/glfw/src/CMakeFiles/update_mappings.dir
-/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/build/external/glfw/src/CMakeFiles/glfw.dir
