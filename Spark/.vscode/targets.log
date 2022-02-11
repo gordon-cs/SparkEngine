@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
- 
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Feb 11 08:34:12 2022
+# Make data base, printed on Fri Feb 11 08:57:40 2022
 
 # Variables
 
@@ -25,11 +23,11 @@ SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 HOMEBREW_PREFIX = /home/linuxbrew/.linuxbrew
 # environment
-STARSHIP_SESSION_KEY = 1415322228550349
+STARSHIP_SESSION_KEY = 290828784948151
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-44a671e6-7d4a-4a41-9b69-b0896d9064bc.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-643fbf3d-c29b-4ed4-981f-34bcc1cefa57.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/pop.mandatory.path
 # environment
@@ -113,7 +111,7 @@ LV2_PATH = /home/hudson/.lv2:/usr/lib/lv2:/usr/local/lib/lv2
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 177013
+VSCODE_PID = 189363
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -223,7 +221,7 @@ LC_MEASUREMENT = en_US.UTF-8
 # environment
 STARSHIP_SHELL = fish
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 177013
+GIO_LAUNCHED_DESKTOP_FILE_PID = 189363
 # environment
 _ = /home/linuxbrew/.linuxbrew/bin/dbus-update-activation-environment
 # environment
@@ -279,6 +277,9 @@ LC_IDENTIFICATION = en_US.UTF-8
 
 # 9 files, no impossibilities in 1 directories.
 
+ 
+make: *** No rule to make target 'all'.  Stop.
+ 
 # Implicit Rules
 
 # No implicit rules.
@@ -293,7 +294,6 @@ Makefile:
 #  Failed to be updated.
 
 # Not a target:
- 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -334,6 +334,6 @@ GNUmakefile:
 # strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=0/20=0%
-# Finished Make data base on Fri Feb 11 08:34:12 2022
+# Finished Make data base on Fri Feb 11 08:57:40 2022
 
  

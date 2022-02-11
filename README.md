@@ -12,3 +12,7 @@
 - ```cd build/```
 - ```make```
 - finally - ```./Spark``` to run
+
+##A few things to note
+- All header files need to be put into the include directory next to the src directory
+- When creating a new .cpp file, you must add the path to CMakeLists.txt in the set(SOURCE) block, exactly like it is currently structured.
