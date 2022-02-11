@@ -6,7 +6,7 @@
   - cmake
   - The dependencies mentioned [here](https://www.glfw.org/docs/3.3/compile_guide.html#compile_deps_x11)
 
-- run ```git clone --recursive git@github.com:Kindlewing/SparkEngine.git```
+- run ```git clone --recursive git@github.com:gordon-cs/SparkEngine.git```
 - ```cd {clone-directory}/SparkEngine/Spark```
 - ```cmake -S . -B build/```
 - ```cd build/```
