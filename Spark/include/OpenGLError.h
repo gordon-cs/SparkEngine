@@ -4,6 +4,7 @@
 #include<iostream>
 #include<ostream>
 
+/* Macro for OpenGL error checks. Wrap every gl function in the GLCall macro */
 #define ASSERT(x) if(!(x)) raise(SIGTRAP);
 #define GLCall(x) GLClearError();\
     x;\

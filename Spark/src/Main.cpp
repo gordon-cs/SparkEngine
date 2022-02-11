@@ -35,13 +35,14 @@ int main() {
 
     GLCall(glViewport(0, 0, 1000, 800));
 
+    /* vertex array */
     float vertices[] = {
         -0.5f, -0.5f, // 0
          0.0f,  0.5f, // 1
          0.5f, -0.5f  // 2
     };
 
-    //Indices for vertices order
+    /* index array */
     uint32_t indices[] = {
         0, 1, 2
     };
@@ -58,6 +59,7 @@ int main() {
     
     Renderer renderer = Renderer(vertexArray, vertexBuffer, indexBuffer);
 
+    /* Main loop */
     while(!glfwWindowShouldClose(window)) {
         GLCall(glClearColor(color.red, color.green, color.blue, color.alpha));
         
@@ -68,6 +70,7 @@ int main() {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+    /* Cleanup */
     vertexArray.Delete();
     vertexBuffer.Delete();
     indexBuffer.Delete();
