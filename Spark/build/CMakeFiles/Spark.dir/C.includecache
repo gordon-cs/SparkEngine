@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/glad/gl.h
+winapifamily.h
+-
+KHR/khrplatform.h
+-
+
+/home/hudson/Development/Projects/C++/Projects/SparkEngine/Spark/src/gl.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+glad/gl.h
+-
+
